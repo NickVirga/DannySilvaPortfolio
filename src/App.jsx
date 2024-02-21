@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import ProtectedPage from "./pages/ProtectedPage/ProtectedPage";
 
-import imageData from "./assets/data/images.json";
 
 function App() {
   return (
