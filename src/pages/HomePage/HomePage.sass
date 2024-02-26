@@ -1,0 +1,30 @@
+@use "../../styles/partials/variables" as *
+@use "../../styles/partials/typography" as *
+    
+.about
+    display: flex
+    margin: auto
+
+    &__profile-pic
+        border-radius: 50%
+
+    &__content
+        display: flex
+        flex-direction: column
+        gap: 1.5rem
+        justify-content: center
+        text-align: center
+
+
+    &__bio
+        line-height: 1.5rem
+
+    &__resume-link
+        font-weight: 400
+        font-style: normal
+        text-decoration: none
+        padding: 0.5rem 1rem
+        border: 1px black solid
+        width: 8rem
+        background-color: $btn-color1
+        color: $btn-color2
