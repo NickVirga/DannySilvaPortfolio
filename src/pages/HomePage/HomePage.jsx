@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 import "./HomePage.sass";
 
-import profilePic from "../../assets/images/about/danny-profile-pic-temp.png";
+// import profilePic from "../../assets/images/misc/AVATAR.png";
 
 function HomePage() {
   return (
     <section className="about">
-      <img className="about__profile-pic" src={profilePic}></img>
+      <img className="about__profile-pic" src={"/images/AVATAR.png"}></img>
       <div className="about__content">
         <h1>ABOUT</h1>
         <p className="about__bio">

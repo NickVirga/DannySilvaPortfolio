@@ -1,20 +1,51 @@
-import React from "react";
+import React, { useState, useEffect} from "react";
+import { Link, useParams, useNavigate} from 'react-router-dom';
 
 import "./LayoutPaintPage.sass"
 
-import image0 from "../../assets/images/layout-paint/placeholder.jpg";
-import image1 from "../../assets/images/layout-paint/placeholder(1).jpg";
-import image2 from "../../assets/images/layout-paint/placeholder(2).jpg";
-import image3 from "../../assets/images/layout-paint/placeholder(3).jpg";
+import imageData from "../../assets/data/images-layout-paint.json"
+
+import Modal from "../../components/Modal/Modal"
+
 
 function LayoutPaintPage() {
+  const navigate = useNavigate()
+  const { imageId } = useParams();
+  const [modalOpen, setModalOpen] = useState(false)
+  const [imageUrl, setImageUrl] = useState(imageId)
+
+  useEffect(() => {
+    if (imageId) {
+      const { url } = imageData.find(image => image.id === imageId) ?? {};
+      setImageUrl(url)
+      setModalOpen(true)
+    }
+  }, [imageId])
+  
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    navigate("/bgpaint")
+  };
+
+  const clickHandler = (url) => {
+    setImageUrl(url)
+    setModalOpen(true)
+  }
+
+
   return (
     <section className="layout-paint">
-      {/* <h1>Layout & Paint</h1> */}
-      <img className="layout-paint__image" src={image0}></img>
-      <img className="layout-paint__image" src={image1}></img>
-      <img className="layout-paint__image" src={image2}></img>
-      <img className="layout-paint__image" src={image3}></img>
+      <Modal
+          open={modalOpen}
+          onClose={handleCloseModal}
+          imageUrl={imageUrl}
+        ></Modal>
+      {imageData.map(image => (
+        <Link className="layout-paint__link" key={image.id} to={`/bgpaint/${image.id}`} onClick={()=>{clickHandler(image.url)}} >
+          <img className="layout-paint__image"  src={image.url} alt={image.caption}></img>
+        </Link>
+      ))}
     </section>
   );
 }
