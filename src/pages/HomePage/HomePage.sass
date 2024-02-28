@@ -3,28 +3,56 @@
     
 .about
     display: flex
+    flex-direction: row
+    justify-content: center
+    padding-top: 7rem
+    gap: 3rem
     margin: auto
 
-    &__profile-pic
+    &__img-container
+        margin-top: 1rem
+        overflow: hidden
         border-radius: 50%
+        min-width: 16.5625rem
+        min-height: 16.5625rem
+        width: 16.5625rem
+        height: 16.5625rem
+        position: relative
+
+    &__profile-pic
+        width: 100%
+        height: 100%
+        transform: scale(1.3)
+        object-fit: cover
+        margin-top: 2.5rem
+        margin-left: 1.5rem
+        
 
     &__content
         display: flex
         flex-direction: column
         gap: 1.5rem
-        justify-content: center
+        align-items: center
         text-align: center
+        width: 20rem
 
+
+    &__title
+        font-size: 1.125rem
+        font-weight: 800
 
     &__bio
         line-height: 1.5rem
+        min-width: 350px
 
     &__resume-link
-        font-weight: 400
+        font-weight: 800
         font-style: normal
+        font-size: 14px
+        line-height: 10px
         text-decoration: none
         padding: 0.5rem 1rem
-        border: 1px black solid
         width: 8rem
+        border: solid $btn-color2 1px
         background-color: $btn-color1
         color: $btn-color2
