@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import "./OpenSeasonPage.sass"
-
+import "./OpenSeasonPage.sass";
 
 function OpenSeasonPage() {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [password, setPassword] = useState("");
-  const [imageDataArray, setImageDataArray] = useState([])
+  const [imageDataArray, setImageDataArray] = useState([]);
   const [error, setError] = useState(null);
 
   const handlePasswordSubmit = async () => {
-    const baseUrl = import.meta.env.VITE_BASE_URL
+    const baseUrl = import.meta.env.VITE_BASE_URL;
     const imagePaths = [
       "1.png",
       "2.png",
@@ -39,8 +38,8 @@ function OpenSeasonPage() {
       "23.png",
       "24.png",
       "25.jpg",
-      "26.jpg"
-    ]
+      "26.jpg",
+    ];
 
     try {
       const responses = await Promise.all(
@@ -50,11 +49,11 @@ function OpenSeasonPage() {
             headers: {
               Authorization: password,
             },
-            responseType: 'blob',
+            responseType: "blob",
           });
         })
       );
-      
+
       const imageDataArray = responses.map((response) => {
         return URL.createObjectURL(response.data);
       });
@@ -70,14 +69,19 @@ function OpenSeasonPage() {
 
   if (!isAuthorized) {
     return (
-      <div>
-        <p>Enter Password</p>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button onClick={handlePasswordSubmit}>Submit</button>
+      <div className="open-season__prompt-container">
+        <div className="open-season__prompt">
+          <p className="open-season__instruction">Enter Password</p>
+          <input
+            className="open-season__input"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button className="open-season__btn" onClick={handlePasswordSubmit}>
+            SUBMIT
+          </button>
+        </div>
       </div>
     );
   }
@@ -85,14 +89,15 @@ function OpenSeasonPage() {
   return (
     <section className="open-season">
       <div className="open-season__gallery">
-      {imageDataArray.map((imageData, index) => (
-        <img
-        className="open-season__image"
-          key={index}
-          src={imageData}
-          alt={`Image ${index + 1}`}
-        />
-      ))}
+        {imageDataArray.map((imageData, index) => (
+          <img
+            className="open-season__image"
+            key={index}
+            src={imageData}
+            alt={`Image ${index + 1}`}
+            // onClick={}
+          />
+        ))}
       </div>
     </section>
   );

@@ -1,3 +1,5 @@
+@use "../../styles/partials/variables" as *
+    
 .header
     padding-bottom: 5rem
     padding-top: 5rem
@@ -5,21 +7,71 @@
     width: 1000px
     margin: auto
 
+    &__title
+        padding-bottom: 0.5rem
+        font-size: 2.5rem
+
+    &__subtitle
+        font-size: 1rem
+        padding-bottom: 1rem
+
     &__logo
         text-decoration: none
         color: black
 
     &__nav
         display: flex
-    
+
     &__list
         display: flex
         gap: 1rem
+        padding-left: 0
+        font-weight: 600
+        -webkit-user-select: none
+        -ms-user-select: none
+        user-select: none
+        list-style-type: none
+
 
     &__item
-        display: flex
-        
+        display: block-inline
+        position: relative
+
+        &:hover
+            color: grey
+
+        &--submenu
+            display: flex
+            position: relative
+
     &__link
         text-decoration: none
         color: black
         cursor: pointer
+        display: inline
+
+        &:hover
+            color: grey
+
+        &--submenu
+            white-space: nowrap
+
+    &__drop-list
+        display: flex
+        flex-direction: column
+        gap: 0.4rem
+        padding-left: 0
+        position: absolute
+        top: 1.5rem
+        list-style-type: none
+
+    &__contact-link
+        font-weight: 600
+        font-size: 14px
+        text-decoration: none
+        padding: 3px 17px 1px 17px
+        border: solid $btn-color2 1px
+        background-color: $btn-color1
+        color: $btn-color2
+        position: relative
+        top: 1px

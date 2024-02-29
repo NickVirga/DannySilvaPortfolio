@@ -12,7 +12,7 @@ function HomePage() {
         <img className="about__profile-pic" src={"/images/AVATAR.png"}></img>
       </div>
       <div className="about__content">
-        <h1 className="about__title">ABOUT</h1>
+        <h1 className="about__">ABOUT</h1>
         <p className="about__bio">
           Danny is an experienced background painter and layout artist working
           in animation. Currently, they are working with 9Story/Brown Bag Films
@@ -22,7 +22,7 @@ function HomePage() {
           productions, they would make an excellent addition to any production
           team. 
         </p>
-        <Link className="about__resume-link" to="/resume">
+        <Link className="about__resume-link" to="/resume" aria-label="RESUME">
           RESUME
         </Link>
       </div>

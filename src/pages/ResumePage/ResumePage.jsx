@@ -50,7 +50,7 @@ function ResumePage() {
 
   return (
     <div>
-      <h1>Resume</h1>
+      {/* <h1>Resume</h1> */}
       {/* <Document file="./sample.pdf" options={options}></Document> */}
       <iframe
         src="Danny Silva 2024 Resume.pdf"
