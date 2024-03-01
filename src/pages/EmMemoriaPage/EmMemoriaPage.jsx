@@ -42,12 +42,15 @@ function EmMemoriaPage() {
           onClose={handleCloseModal}
           imageUrl={imageUrl}
         ></Modal>
+        <Link className="em-memoria__link" key={imageData[0].id} to={`/thesis-em-memoria/${imageData[0].id}`} onClick={()=>{clickHandler(imageData[0].url)}} >
+          <img className="em-memoria__image"  src={imageData[0].url} alt={imageData[0].caption}></img>
+        </Link>
       {videoData.map(video => (
-        <video key={video.id} width="1000" controls >
+        <video className="em-memoria__video" key={video.id} controls >
         <source src={video.url} type="video/mp4"/>
   </video>
       ))}
-      {imageData.map(image => (
+      {imageData.slice(1).map(image => (
         <Link className="em-memoria__link" key={image.id} to={`/thesis-em-memoria/${image.id}`} onClick={()=>{clickHandler(image.url)}} >
           <img className="em-memoria__image"  src={image.url} alt={image.caption}></img>
         </Link>

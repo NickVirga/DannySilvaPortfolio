@@ -28,11 +28,12 @@ function App() {
         <Route path="/elinorwonderswhy" element={<ElinorWondersPage />} />
         <Route path="/elinorwonderswhy/:imageId" element={<ElinorWondersPage />} />
         <Route path="/openseason" element={<OpenSeasonPage />} />
+        <Route path="/openseason/:imageId" element={<OpenSeasonPage />} />
         <Route path="/thesis-em-memoria" element={<EmMemoriaPage />} />
         <Route path="/thesis-em-memoria/:imageId" element={<EmMemoriaPage />} />
         <Route path="/pizza-panic-group-film" element={<PizzaPanicPage />} />
         {/* <Route path="/design" element={<DesignPage />} /> */}
-        <Route path="/resume" element={<ResumePage />} />
+        {/* <Route path="/resume" element={<ResumePage />} /> */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer></Footer>

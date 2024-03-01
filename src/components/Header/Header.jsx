@@ -120,9 +120,13 @@ function Header() {
               <Link className="header__link" to="/design">Design</Link>
             </li> */}
             <li className="header__item">
-              <Link className="header__link" to="/resume">
+              {/* <Link className="header__link" to="/resume">
                 Resume
-              </Link>
+              </Link> */}
+              <a className="header__link" href="/Danny Silva 2024 Resume.pdf" target="_blank"
+                aria-label="RESUME">
+                Resume
+              </a>
             </li>
             <li className="header__item">
               <Link className="header__link" to="/">

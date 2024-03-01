@@ -1,50 +1,39 @@
 import React, { useState, useEffect } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import "./OpenSeasonPage.sass";
 
+import imageData from "../../assets/data/images-open-season.json";
+
+import Modal from "../../components/Modal/Modal";
+
 function OpenSeasonPage() {
+  const navigate = useNavigate();
+  const { imageId } = useParams();
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [password, setPassword] = useState("");
-  const [imageDataArray, setImageDataArray] = useState([]);
-  const [error, setError] = useState(null);
+  const [imageDataArray, setImageDataArray] = useState(imageData);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [imageUrl, setImageUrl] = useState(imageId);
+
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+
+  useEffect(() => {
+    if (imageId) {
+      const { image } =
+        imageDataArray.find((image) => image.id === imageId) ?? {};
+      setImageUrl(image);
+      setModalOpen(true);
+    }
+  }, [imageDataArray]);
 
   const handlePasswordSubmit = async () => {
-    const baseUrl = import.meta.env.VITE_BASE_URL;
-    const imagePaths = [
-      "1.png",
-      "2.png",
-      "3.png",
-      "4.png",
-      "5.png",
-      "6.jpg",
-      "7.jpg",
-      "8.jpg",
-      "8(9).png",
-      "9.jpg",
-      "10.png",
-      "11.jpg",
-      "12.png",
-      "13.png",
-      "14.jpg",
-      "15.png",
-      "16.jpg",
-      "17.png",
-      "18.jpg",
-      "19.png",
-      "20.jpg",
-      "21.png",
-      "22.jpg",
-      "23.png",
-      "24.png",
-      "25.jpg",
-      "26.jpg",
-    ];
-
     try {
       const responses = await Promise.all(
-        imagePaths.map(async (imagePath) => {
-          const imageUrl = `${baseUrl}/${imagePath}`;
+        imageData.map(async (image) => {
+          const imageUrl = `${baseUrl}${image.url}`;
           return axios.get(imageUrl, {
             headers: {
               Authorization: password,
@@ -54,17 +43,33 @@ function OpenSeasonPage() {
         })
       );
 
-      const imageDataArray = responses.map((response) => {
-        return URL.createObjectURL(response.data);
-      });
+      const updatedImageDataArray = imageDataArray.map((image, index) => ({
+        ...image,
+        image: URL.createObjectURL(responses[index].data),
+      }));
 
-      setImageDataArray(imageDataArray);
+      setImageDataArray(updatedImageDataArray);
 
       setIsAuthorized(true);
-      setError(null);
+      setErrorMessage(null);
     } catch (error) {
-      setError("Unauthorized");
+      setErrorMessage("Unauthorized");
     }
+  };
+
+  const handleOnChange = (input) => {
+    setPassword(input);
+    setErrorMessage(null);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    navigate("/openseason");
+  };
+
+  const clickHandler = (image) => {
+    setImageUrl(image);
+    setModalOpen(true);
   };
 
   if (!isAuthorized) {
@@ -76,11 +81,12 @@ function OpenSeasonPage() {
             className="open-season__input"
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => handleOnChange(e.target.value)}
           />
           <button className="open-season__btn" onClick={handlePasswordSubmit}>
             SUBMIT
           </button>
+          {errorMessage && <p className="open-season__error">{errorMessage}</p>}
         </div>
       </div>
     );
@@ -88,15 +94,28 @@ function OpenSeasonPage() {
 
   return (
     <section className="open-season">
+      <Modal
+        open={modalOpen}
+        onClose={handleCloseModal}
+        imageUrl={imageUrl}
+      ></Modal>
       <div className="open-season__gallery">
-        {imageDataArray.map((imageData, index) => (
-          <img
-            className="open-season__image"
-            key={index}
-            src={imageData}
-            alt={`Image ${index + 1}`}
-            // onClick={}
-          />
+        {imageDataArray.map((imageData) => (
+          <Link
+            className="open-season__link"
+            key={imageData.id}
+            to={`/openseason/${imageData.id}`}
+            onClick={() => {
+              clickHandler(imageData.image);
+            }}
+          >
+            <img
+              className="open-season__image"
+              key={imageData.id}
+              src={imageData.image}
+              alt={imageData.caption}
+            />
+          </Link>
         ))}
       </div>
     </section>
