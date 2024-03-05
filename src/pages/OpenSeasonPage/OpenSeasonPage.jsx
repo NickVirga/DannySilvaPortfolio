@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { Link, useParams, useNavigate} from "react-router-dom";
 
 import "./OpenSeasonPage.sass";
 
@@ -11,50 +10,31 @@ import Modal from "../../components/Modal/Modal";
 function OpenSeasonPage() {
   const navigate = useNavigate();
   const { imageId } = useParams();
-  const [isAuthorized, setIsAuthorized] = useState(false);
+  const [isAuthenticated, setAuthenticated] = useState(false);
   const [password, setPassword] = useState("");
-  const [imageDataArray, setImageDataArray] = useState(imageData);
   const [errorMessage, setErrorMessage] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [imageUrl, setImageUrl] = useState(imageId);
 
-  const baseUrl = import.meta.env.VITE_BASE_URL;
-
   useEffect(() => {
     if (imageId) {
-      const { image } =
-        imageDataArray.find((image) => image.id === imageId) ?? {};
-      setImageUrl(image);
-      setModalOpen(true);
+      const { url } = imageData.find(image => image.id === imageId) ?? {};
+      setImageUrl(url)
+      setModalOpen(true)
     }
-  }, [imageDataArray]);
+  }, [imageId])
 
-  const handlePasswordSubmit = async () => {
-    try {
-      const responses = await Promise.all(
-        imageData.map(async (image) => {
-          const imageUrl = `${baseUrl}${image.url}`;
-          return axios.get(imageUrl, {
-            headers: {
-              Authorization: password,
-            },
-            responseType: "blob",
-          });
-        })
-      );
+  const handlePasswordSubmit = async (e) => {
+    e.preventDefault()
 
-      const updatedImageDataArray = imageDataArray.map((image, index) => ({
-        ...image,
-        image: URL.createObjectURL(responses[index].data),
-      }));
+    const response = await fetch('/.netlify/functions/authenticate', {
+      method: 'POST',
+      body: JSON.stringify({ password }),
+    });
 
-      setImageDataArray(updatedImageDataArray);
-
-      setIsAuthorized(true);
-      setErrorMessage(null);
-    } catch (error) {
-      setErrorMessage("Unauthorized");
-    }
+    const { authenticated } = await response.json();
+    setAuthenticated(authenticated);
+    
   };
 
   const handleOnChange = (input) => {
@@ -72,7 +52,7 @@ function OpenSeasonPage() {
     setModalOpen(true);
   };
 
-  if (!isAuthorized) {
+  if (!isAuthenticated) {
     return (
       <div className="open-season__prompt-container">
         <div className="open-season__prompt">
@@ -92,6 +72,7 @@ function OpenSeasonPage() {
     );
   }
 
+
   return (
     <section className="open-season">
       <Modal
@@ -100,23 +81,11 @@ function OpenSeasonPage() {
         imageUrl={imageUrl}
       ></Modal>
       <div className="open-season__gallery">
-        {imageDataArray.map((imageData) => (
-          <Link
-            className="open-season__link"
-            key={imageData.id}
-            to={`/openseason/${imageData.id}`}
-            onClick={() => {
-              clickHandler(imageData.image);
-            }}
-          >
-            <img
-              className="open-season__image"
-              key={imageData.id}
-              src={imageData.image}
-              alt={imageData.caption}
-            />
-          </Link>
-        ))}
+        {imageData.map(image => (
+        <Link className="open-season__link" key={image.id} to={`/openseason/${image.id}`} onClick={()=>{clickHandler(image.url)}} >
+          <img className="open-season__image"  src={image.url} alt={image.caption}></img>
+        </Link>
+      ))}
       </div>
     </section>
   );
