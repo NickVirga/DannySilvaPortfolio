@@ -1,6 +1,8 @@
-const jwt = require("jsonwebtoken");
+
 
 export default async (req, context) => {
+  const jwt = require("jsonwebtoken");
+
   try {
     const data = await req.json()
     if (!data.body) {
@@ -11,7 +13,7 @@ export default async (req, context) => {
     if (password === Netlify.env.get("PASSWORD")) {
       const token = jwt.sign(
         {
-          password: "test"
+          password: password
         },
         process.env.JWT_SECRET_KEY,
         {
