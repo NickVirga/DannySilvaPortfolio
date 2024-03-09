@@ -1,7 +1,7 @@
 
 
 export default async (req, context) => {
-  const jwt = require("jsonwebtoken");
+  const jwt = require("../../jsonwebtoken");
 
   try {
     const data = await req.json()
