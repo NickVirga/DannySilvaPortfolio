@@ -1,30 +1,33 @@
 const jwt = require("jsonwebtoken");
 
-export async function handler(event, context) {
-  const parsedEvent =  JSON.parse(event.body);
-  const innerData = JSON.parse(parsedEvent.body)
-  
-  if (innerData.password === process.env.PASSWORD) {
+export default async (req, context) => {
+  try {
+    const data = await req.json()
+    if (!data.body) {
+      throw new Error("Request body is empty or undefined");
+    }
+    const password = JSON.parse(data.body).password
 
-    const token = jwt.sign(
-      {
-        password: innerData.password
-      },
-      process.env.JWT_SECRET_KEY,
-      {
-        expiresIn: "24h",
-      }
-    );
+    if (password === Netlify.env.get("PASSWORD")) {
+      const token = jwt.sign(
+        {
+          password: "test"
+        },
+        process.env.JWT_SECRET_KEY,
+        {
+          expiresIn: "24h",
+        }
+      );
+        return new Response(JSON.stringify({ authenticated: true, token: token }), { status: 200 })
+    } else {
+      return new Response(JSON.stringify({ authenticated: false }), { status: 401 })
+    }
 
+  } catch (error) {
+    console.error("Error handling request:", error);
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ authenticated: true, token: token }),
-    };
-  } else {
-    return {
-      statusCode: 401,
-      body: JSON.stringify({ authenticated: false }),
-    };
+    return new Response(JSON.stringify({ error: "Invalid request" }), { status: 400 });
   }
+ 
+ 
 };
