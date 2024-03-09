@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 
 import "./HomePage.sass";
 
-// import profilePic from "../../assets/images/misc/AVATAR.png";
-
 function HomePage() {
   return (
     <section className="about">
@@ -22,9 +20,9 @@ function HomePage() {
           productions, they would make an excellent addition to any production
           team. 
         </p>
-        <Link className="about__resume-link" to="/resume" aria-label="RESUME">
+        <a className="about__resume-link" href="/Danny Silva 2024 Resume.pdf" target="_blank" aria-label="RESUME">
           RESUME
-        </Link>
+        </a>
       </div>
     </section>
   );

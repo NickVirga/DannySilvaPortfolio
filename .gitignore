@@ -26,7 +26,6 @@ dist-ssr
 # misc
 .DS_Store
 .env
-public/videos/
 
 # Local Netlify folder
 .netlify

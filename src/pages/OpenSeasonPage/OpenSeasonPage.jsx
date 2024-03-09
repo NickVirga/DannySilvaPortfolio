@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams, useNavigate} from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import axios from "axios"
 
 import "./OpenSeasonPage.sass";
 
 import imageData from "../../assets/data/images-open-season.json";
 
 import Modal from "../../components/Modal/Modal";
+import ProtectedImage from "../../components/ProtectedImage/ProtectedImage";
 
 function OpenSeasonPage() {
   const navigate = useNavigate();
@@ -16,25 +18,34 @@ function OpenSeasonPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [imageUrl, setImageUrl] = useState(imageId);
 
+
   useEffect(() => {
     if (imageId) {
-      const { url } = imageData.find(image => image.id === imageId) ?? {};
-      setImageUrl(url)
-      setModalOpen(true)
+      const { url } = imageData.find((image) => image.id === imageId) ?? {};
+      setImageUrl(url);
+      setModalOpen(true);
     }
-  }, [imageId])
+
+  }, [imageId]);
 
   const handlePasswordSubmit = async (e) => {
-    e.preventDefault()
-
-    const response = await fetch('/.netlify/functions/authenticate', {
-      method: 'POST',
+    e.preventDefault();
+    
+    const response = await axios.post('/.netlify/functions/authenticate', {
       body: JSON.stringify({ password }),
     });
 
-    const { authenticated } = await response.json();
-    setAuthenticated(authenticated);
-    
+    console.log(response.data)
+
+    if (response.data.authenticated) {
+      sessionStorage.authToken = response.data.token;
+      setAuthenticated(true);
+    } else {
+      setAuthenticated(false);
+      setErrorMessage("Access Denied");
+    }
+
+  
   };
 
   const handleOnChange = (input) => {
@@ -72,20 +83,27 @@ function OpenSeasonPage() {
     );
   }
 
-
   return (
     <section className="open-season">
       <Modal
         open={modalOpen}
         onClose={handleCloseModal}
         imageUrl={imageUrl}
+        isProtected={true}
       ></Modal>
       <div className="open-season__gallery">
-        {imageData.map(image => (
-        <Link className="open-season__link" key={image.id} to={`/openseason/${image.id}`} onClick={()=>{clickHandler(image.url)}} >
-          <img className="open-season__image"  src={image.url} alt={image.caption}></img>
-        </Link>
-      ))}
+        {imageData.map((image) => (
+          <Link
+            className="open-season__link"
+            key={image.id}
+            to={`/openseason/${image.id}`}
+            onClick={() => {
+              clickHandler(image.url);
+            }}
+          >
+            <ProtectedImage id={image.id} alt={image.alt} url={image.url}></ProtectedImage>
+          </Link>
+        ))}
       </div>
     </section>
   );

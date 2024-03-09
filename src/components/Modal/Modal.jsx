@@ -1,8 +1,9 @@
 import ReactDom from "react-dom";
 
 import "./Modal.sass";
+import ProtectedImage from "../ProtectedImage/ProtectedImage";
 
-function Modal({ open, onClose, imageUrl }) {
+function Modal({ open, onClose, imageUrl, isProtected }) {
     if (!open) return null;
 
     const portalContainer = document.getElementById("portal");
@@ -15,7 +16,8 @@ function Modal({ open, onClose, imageUrl }) {
         <>
           <div className="modal__overlay" onClick={onClose}> </div>
           <div className="modal">
-            <img className="modal__image"  src={imageUrl}></img>
+            {isProtected && <ProtectedImage url={imageUrl}></ProtectedImage>}
+            {!isProtected && <img className="modal__image"  src={imageUrl}></img>}
             {/* <button onClick={onClose}>Close Modal</button> */}
           </div>
         </>,
