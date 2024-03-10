@@ -92,7 +92,7 @@ function OpenSeasonPage() {
         isProtected={true}
       ></Modal>
       <div className="open-season__gallery">
-        {imageData.map((image) => (
+        {imageData.slice(0, 18).map((image) => (
           <Link
             className="open-season__link"
             key={image.id}
@@ -101,7 +101,19 @@ function OpenSeasonPage() {
               clickHandler(image.url);
             }}
           >
-            <ProtectedImage id={image.id} alt={image.alt} url={image.url}></ProtectedImage>
+            <ProtectedImage id={image.id} alt={image.alt} url={image.url} fcnId={1}></ProtectedImage>
+          </Link>
+        ))}
+        {imageData.slice(18).map((image) => (
+          <Link
+            className="open-season__link"
+            key={image.id}
+            to={`/openseason/${image.id}`}
+            onClick={() => {
+              clickHandler(image.url);
+            }}
+          >
+            <ProtectedImage id={image.id} alt={image.alt} url={image.url} fcnId={2}></ProtectedImage>
           </Link>
         ))}
       </div>

@@ -3,7 +3,7 @@ import axios from "axios";
 
 import "./ProtectedImage.sass"
 
-const ProtectedImage = ({ id, alt, url }) => {
+const ProtectedImage = ({ id, alt, url, fcnId}) => {
   const [imageSrc, setImageSrc] = useState("");
 
   useEffect(() => {
@@ -11,8 +11,12 @@ const ProtectedImage = ({ id, alt, url }) => {
       if (!!sessionStorage.authToken) {
         const token = sessionStorage.authToken;
 
+        const endpoint = fcnId === 1
+  ? `/.netlify/functions/protectImage?id=${id}`
+  : `/.netlify/functions/protectImage2?id=${id}`;
+
         try {
-          const response = await axios(`/.netlify/functions/protectImage?id=${id}`, {
+          const response = await axios(endpoint, {
             headers: {
               Authorization: `Bearer ${token}`,
               url: url

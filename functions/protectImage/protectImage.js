@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
-const path = require("path");
 const util = require("util");
 const sharp = require('sharp');
 
@@ -23,7 +22,7 @@ exports.handler = async (event, context) => {
         const imageBuffer = fs.readFileSync(require.resolve(url));
 
         const resizedImageBuffer = await sharp(imageBuffer)
-          .resize({ width: 300 }) // Adjust the width as needed
+          .resize({ width: 300 })
           .toBuffer();
 
         return {
@@ -31,7 +30,7 @@ exports.handler = async (event, context) => {
           body: resizedImageBuffer.toString("base64"),
           isBase64Encoded: true,
           headers: {
-            "Content-Type": "image/png", // Adjust the content type based on your image type
+            "Content-Type": "image/png",
           },
         };
       } else {
