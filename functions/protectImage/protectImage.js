@@ -13,14 +13,15 @@ exports.handler = async (event, context) => {
     const payload = await verifyToken(token, process.env.JWT_SECRET_KEY);
 
     if (payload.password === process.env.PASSWORD) {
-      
+      console.log("password worked")
       const url = event.headers.url;
+      console.log("url:", url)
       const imagePath = path.resolve(
         __dirname,
         "../../../../../public/images/open-season",
         path.basename(url)
       );
-
+        console.log("imagePath:", imagePath)
       if (fs.existsSync(imagePath)) {
         
         const imageBuffer = fs.readFileSync(imagePath);
