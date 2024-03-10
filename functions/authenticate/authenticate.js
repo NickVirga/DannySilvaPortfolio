@@ -7,9 +7,9 @@ exports.handler = async (event, context) => {
     const password = JSON.parse(dataBody.body).password
 
     console.log("event pass", password)
-    console.log("Netlify env pass", Netlify.env.get("PASSWORD"))
+    console.log("Netlify env pass", process.env.PASSWORD)
     
-    if (password === Netlify.env.get("PASSWORD")) {
+    if (password === process.env.PASSWORD) {
       const token = jwt.sign(
         {
           password: password
