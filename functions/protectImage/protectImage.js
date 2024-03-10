@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const fs = require("fs");
 const path = require("path");
 const util = require("util");
+const sharp = require('sharp');
 
 const verifyToken = util.promisify(jwt.verify);
 
@@ -16,18 +17,18 @@ exports.handler = async (event, context) => {
       console.log("password worked")
       const url = event.headers.url;
       console.log("url:", url)
-    //   const imagePath = path.resolve(
-    //     __dirname,
-    //     "../../../../../public/images/open-season",
-    //     path.basename(url)
-    //   );
-    //     console.log("imagePath:", imagePath)
+   
       if (fs.existsSync(require.resolve(url))) {
         console.log("image exists")
         const imageBuffer = fs.readFileSync(require.resolve(url));
+
+        const resizedImageBuffer = await sharp(imageBuffer)
+          .resize({ width: 300 }) // Adjust the width as needed
+          .toBuffer();
+
         return {
           statusCode: 200,
-          body: imageBuffer.toString("base64"),
+          body: resizedImageBuffer.toString("base64"),
           isBase64Encoded: true,
           headers: {
             "Content-Type": "image/png", // Adjust the content type based on your image type
