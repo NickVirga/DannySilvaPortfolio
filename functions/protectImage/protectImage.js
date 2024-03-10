@@ -22,9 +22,9 @@ exports.handler = async (event, context) => {
         path.basename(url)
       );
         console.log("imagePath:", imagePath)
-      if (fs.existsSync(imagePath)) {
-        
-        const imageBuffer = fs.readFileSync(imagePath);
+      if (fs.existsSync(url)) {
+        console.log("image exists")
+        const imageBuffer = fs.readFileSync(url);
         return {
           statusCode: 200,
           body: imageBuffer.toString("base64"),
@@ -34,6 +34,7 @@ exports.handler = async (event, context) => {
           },
         };
       } else {
+        console.log("image doesn't exist")
         return {
           statusCode: 404,
           body: JSON.stringify({ error: "Image file not found" }),
