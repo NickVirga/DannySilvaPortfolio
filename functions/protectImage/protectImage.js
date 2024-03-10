@@ -16,15 +16,15 @@ exports.handler = async (event, context) => {
       console.log("password worked")
       const url = event.headers.url;
       console.log("url:", url)
-      const imagePath = path.resolve(
-        __dirname,
-        "../../../../../public/images/open-season",
-        path.basename(url)
-      );
-        console.log("imagePath:", imagePath)
-      if (fs.existsSync(url)) {
+    //   const imagePath = path.resolve(
+    //     __dirname,
+    //     "../../../../../public/images/open-season",
+    //     path.basename(url)
+    //   );
+    //     console.log("imagePath:", imagePath)
+      if (fs.existsSync(require.resolve(url))) {
         console.log("image exists")
-        const imageBuffer = fs.readFileSync(url);
+        const imageBuffer = fs.readFileSync(require.resolve(url));
         return {
           statusCode: 200,
           body: imageBuffer.toString("base64"),
