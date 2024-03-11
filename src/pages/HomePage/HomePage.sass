@@ -1,13 +1,20 @@
 @use "../../styles/partials/variables" as *
+@use "../../styles/partials/mixins" as *
     
 .about
     display: flex
-    flex-direction: row
+    flex-direction: column
     justify-content: center
-    padding-top: 7rem
+    padding-top: 0
     gap: 3rem
     margin: auto
     min-height: 100vh
+    align-items: center
+
+    @include tablet
+        flex-direction: row
+        padding-top: 7rem
+        align-items: flex-start
 
     &__img-container
         margin-top: 1rem
