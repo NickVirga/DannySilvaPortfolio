@@ -1,54 +1,17 @@
-@use "../../styles/partials/variables" as *
-@use "../../styles/partials/typography" as *
+@use "../../styles/partials/_mixins" as *
     
 .open-season
-    padding: 0.5rem 1rem
+    display: flex
+    flex-direction: column
+    gap: 0.5rem
+    align-items: center
     margin: auto
-    max-width: 70rem
-    min-height: 100vh
-
-    &__prompt-container
-        display: flex
-        align-items: flex-start
-        justify-content: center
-        height: 100vh
-        padding-top: 2rem
-
-    &__prompt
-        text-align: center
-
-    &__instruction
-        font-size: 1.125rem
-        margin-bottom: 0.625rem
-
-    &__input
-        padding: 0.5rem
-        margin-bottom: 0.0625rem
-        
-
-    &__btn
-        padding: 11px 20px
-        background-color: $btn-color1
-        color: $btn-color2
-        border: none
-        cursor: pointer
-        font-size: 14px
-        font-weight: 600
-        line-height: 1
-        position: relative
-        top: 0.0625rem
-
-    &__error
-        color: red
-        text-align: left
-        padding-left: 0.0625rem
-
-    &__gallery
-        display: flex
-        flex-direction: row
-        flex-wrap: wrap
-        gap: 0.5rem
+    padding-top: 0.5rem
 
     &__image
-        max-width: 70rem
         pointer-events: none
+        width: 100%
+        height: auto
+        
+        @include tablet
+            max-width: 55rem

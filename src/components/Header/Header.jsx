@@ -14,27 +14,27 @@ function Header() {
   let leaveFilmsTimeout;
 
   const handleMouseEnterProfWorkMenu = () => {
-    clearTimeout(leaveProfWorkTimeout)
+    clearTimeout(leaveProfWorkTimeout);
     setFilmsMenuVisible(false);
     setProfWorkMenuVisible(true);
   };
 
   const handleMouseLeaveProfWorkMenu = () => {
     leaveProfWorkTimeout = setTimeout(() => {
-    setProfWorkMenuVisible(false);
-  }, 500);
+      setProfWorkMenuVisible(false);
+    }, 500);
   };
 
   const handleMouseEnterFilmsMenu = () => {
-    clearTimeout(leaveFilmsTimeout)
+    clearTimeout(leaveFilmsTimeout);
     setProfWorkMenuVisible(false);
     setFilmsMenuVisible(true);
   };
 
   const handleMouseLeaveFilmsMenu = () => {
     leaveFilmsTimeout = setTimeout(() => {
-    setFilmsMenuVisible(false);
-  }, 500);
+      setFilmsMenuVisible(false);
+    }, 500);
   };
 
   return (
@@ -45,7 +45,7 @@ function Header() {
       <h2 className="header__subtitle">Layout Artist & Background Painter</h2>
       <div>
         <nav className="header__nav">
-          <ul className="header__list">
+          <ul className="header__list header__list--wraps">
             <li className="header__item">
               <Link className="header__link" to="/bgpaint">
                 Layout & Paint
@@ -95,12 +95,18 @@ function Header() {
               {isFilmsMenuVisible && (
                 <ul className="header__drop-list">
                   <li className="header__item">
-                    <Link className="header__link header__link--submenu" to="/thesis-em-memoria">
+                    <Link
+                      className="header__link header__link--submenu"
+                      to="/thesis-em-memoria"
+                    >
                       Em Memoria
                     </Link>
                   </li>
                   <li className="header__item">
-                    <Link className="header__link header__link--submenu" to="/pizza-panic-group-film">
+                    <Link
+                      className="header__link header__link--submenu"
+                      to="/pizza-panic-group-film"
+                    >
                       Pizza Panic!
                     </Link>
                   </li>
@@ -116,15 +122,13 @@ function Header() {
                 Personal Work
               </a>
             </li>
-            {/* <li className="header__item">
-              <Link className="header__link" to="/design">Design</Link>
-            </li> */}
             <li className="header__item">
-              {/* <Link className="header__link" to="/resume">
-                Resume
-              </Link> */}
-              <a className="header__link" href="/Danny Silva 2024 Resume.pdf" target="_blank"
-                aria-label="RESUME">
+              <a
+                className="header__link"
+                href="https://drive.google.com/file/d/14_w0y63uVIi85OGG6Yx8Gef0n6952Ll_/view?usp=sharing"
+                target="_blank"
+                aria-label="RESUME"
+              >
                 Resume
               </a>
             </li>
@@ -133,6 +137,8 @@ function Header() {
                 About
               </Link>
             </li>
+          </ul>
+          <ul className="header__list">
             <li className="header__item">
               <a
                 className="header__contact-link"

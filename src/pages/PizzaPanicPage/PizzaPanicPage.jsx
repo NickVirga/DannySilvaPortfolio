@@ -5,6 +5,7 @@ import "./PizzaPanicPage.sass"
 function PizzaPanicPage() {
   return (
     <section className="pizza-panic"> 
+      <div className="pizza-panic__video-container">
       <iframe
       className="pizza-panic__video"
         src="https://www.youtube.com/embed/esq33z8eSDc?si=SwvzQn7UyVDaN5rd"
@@ -12,6 +13,7 @@ function PizzaPanicPage() {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
       ></iframe>
+      </div>
       <p className="pizza-panic__summary">
         "Pizza Panic!" is a third-year group film produced at Sheridan College
         that has been nominated for best student film at the 2020 Ottawa
@@ -22,6 +24,7 @@ function PizzaPanicPage() {
         responsible for the production of rough and clean animation, layout,
         background painting, and compositing.{" "}
       </p>
+      
     </section>
   );
 }

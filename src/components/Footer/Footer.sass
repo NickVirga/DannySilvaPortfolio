@@ -1,12 +1,17 @@
 @use "../../styles/partials/variables" as *
+@use "../../styles/partials/_mixins" as *
 
 .footer
     margin-top: 4rem
 
     &__copyright
-        padding-left: 10rem
+        text-align: center
         padding-bottom: 0.5rem
         font-size: 0.875rem
+
+        @include tablet
+            text-align: left
+            padding-left: 10rem
 
     &__accent
         height: 5rem

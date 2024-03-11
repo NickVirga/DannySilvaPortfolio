@@ -1,4 +1,3 @@
-// import "./App.css";
 import "./App.sass"
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -11,8 +10,6 @@ import ElinorWondersPage from "./pages/ElinorWondersPage/ElinorWondersPage"
 import OpenSeasonPage from "./pages/OpenSeasonPage/OpenSeasonPage"
 import EmMemoriaPage from "./pages/EmMemoriaPage/EmMemoriaPage"
 import PizzaPanicPage from "./pages/PizzaPanicPage/PizzaPanicPage"
-import DesignPage from "./pages/DesignPage/DesignPage"
-import ResumePage from "./pages/ResumePage/ResumePage"
 import NotFoundPage from "./pages/NotFoundPage/NotFound"
 
 function App() {

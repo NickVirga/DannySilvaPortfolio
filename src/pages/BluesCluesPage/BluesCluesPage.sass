@@ -1,12 +1,17 @@
+@use "../../styles/partials/_mixins" as *
+    
 .blues-clues
     display: flex
     flex-direction: column
     gap: 0.5rem
-    justify-content: center
-    width: 61.25rem
+    align-items: center
     margin: auto
     padding-top: 0.5rem
 
     &__image
-        width: 61.25rem
         pointer-events: none
+        width: 100%
+        height: auto
+        
+        @include tablet
+            max-width: 55rem

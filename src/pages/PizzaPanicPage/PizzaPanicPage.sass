@@ -1,3 +1,5 @@
+@use "../../styles/partials/_mixins" as *
+    
 .pizza-panic
     display: flex
     flex-direction: column
@@ -10,8 +12,32 @@
     &__summary
         max-width: 600px
         line-height: 1.5rem
+        
+
+        @include tablet
+            position: absolute
+            top: 800px
+
+    &__video-container
+        position: relative
+        width: 100%
+        padding-bottom: 56.25%
+        height: 0
+
+        @include tablet
+            max-width: 55rem
+            max-height: 30rem
 
     &__video
+        position: absolute
+        top: 0
+        left: 0
         width: 100%
-        max-width: 800px
-        height: 400px
+        height: 100%
+
+        @include tablet
+            max-width: 55rem
+            max-height: 30rem
+
+
+        
