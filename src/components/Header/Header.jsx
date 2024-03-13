@@ -42,7 +42,7 @@ function Header() {
       <Link className="header__logo" to="/">
         <h1 className="header__title">Danny Silva</h1>
       </Link>
-      <h2 className="header__subtitle">Layout Artist & Background Painter</h2>
+      <h2 className="header__subtitle">Illustrator and Background Artist</h2>
       <div>
         <nav className="header__nav">
           <ul className="header__list header__list--wraps">
