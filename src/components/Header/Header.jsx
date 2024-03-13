@@ -80,7 +80,7 @@ function Header() {
                       className="header__link header__link--submenu"
                       to="/openseason"
                     >
-                      Open Season: Call of Nature (2023)
+                      Open Season: Call of Nature
                     </Link>
                   </li>
                 </ul>
