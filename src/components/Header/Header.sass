@@ -3,13 +3,22 @@
     
 .header
     padding-bottom: 1rem
-    padding-top: 5rem
     border-bottom: 1px solid black
     max-width: 1000px
     margin: auto
+    display: flex
+    justify-content: space-between
 
     @include tablet
+        padding-top: 5rem
         padding-bottom: 5rem
+        flex-direction: column
+
+    &__title-container
+        padding-left: 1rem
+
+        @include tablet
+            padding-left: 0
 
     &__title
         padding-bottom: 0.5rem
@@ -24,12 +33,13 @@
         color: black
 
     &__nav
-        display: flex
-        flex-direction: column
-        gap: 5rem
-        align-items: center
+        display: none
 
         @include tablet
+            display: flex
+            flex-direction: column
+            gap: 5rem
+            align-items: center
             flex-direction: row
             gap: 1rem
 
@@ -48,7 +58,6 @@
 
 
     &__item
-        // display: inline-block
         position: relative
 
         &:hover
@@ -84,8 +93,24 @@
         font-size: 14px
         text-decoration: none
         padding: 3px 17px 1px 17px
-        border: solid $btn-color2 1px
-        background-color: $btn-color1
-        color: $btn-color2
+        border: solid $accent-color2 1px
+        background-color: $accent-color1
+        color: $accent-color2
         position: relative
         top: 1px
+
+    &__menu-icon
+        font-size: 2.5rem
+        cursor: pointer
+        position: fixed
+        right: 0.5rem
+
+        @include tablet
+            display: none
+            
+
+    &__hamburger-menu
+        display: none
+
+        &--visible
+           display: block 

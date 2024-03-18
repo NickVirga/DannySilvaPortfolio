@@ -7,11 +7,20 @@ import linkedInIcon from "../../assets/icons/linkedin-icon.png";
 import twitterIcon from "../../assets/icons/twitter-icon.png";
 import instagramIcon from "../../assets/icons/instagram-icon.png";
 
+import { IoMenu } from "react-icons/io5";
+import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
+
 function Header() {
+  // const [isMobile, setIsMobile] = useState(false);
+  const [hmbgrMenuOpen, setHmbgrMenuOpen] = useState(false);
   const [isProfWorkMenuVisible, setProfWorkMenuVisible] = useState(false);
   const [isFilmsMenuVisible, setFilmsMenuVisible] = useState(false);
   let leaveProfWorkTimeout;
   let leaveFilmsTimeout;
+
+  const toggleMenu = () => {
+    setHmbgrMenuOpen(!hmbgrMenuOpen);
+  };
 
   const handleMouseEnterProfWorkMenu = () => {
     clearTimeout(leaveProfWorkTimeout);
@@ -39,11 +48,12 @@ function Header() {
 
   return (
     <header className="header">
+      <div className="header__title-container">
       <Link className="header__logo" to="/">
         <h1 className="header__title">Danny Silva</h1>
       </Link>
       <h2 className="header__subtitle">Illustrator and Background Artist</h2>
-      <div>
+      </div>
         <nav className="header__nav">
           <ul className="header__list header__list--wraps">
             <li className="header__item">
@@ -169,7 +179,12 @@ function Header() {
             </li>
           </ul>
         </nav>
-      </div>
+      <IoMenu className="header__menu-icon" onClick={toggleMenu} />
+      <HamburgerMenu
+          
+          open={hmbgrMenuOpen}
+          onClose={toggleMenu}
+        ></HamburgerMenu>
     </header>
   );
 }
