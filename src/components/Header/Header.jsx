@@ -1,22 +1,26 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import "./Header.sass";
 
-import linkedInIcon from "../../assets/icons/linkedin-icon.png";
-import twitterIcon from "../../assets/icons/twitter-icon.png";
-import instagramIcon from "../../assets/icons/instagram-icon.png";
-
-import { IoMenu } from "react-icons/io5";
+import { IoMenu, IoLogoTwitter, IoLogoInstagram, IoLogoLinkedin, IoMail } from "react-icons/io5";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
 
 function Header() {
-  // const [isMobile, setIsMobile] = useState(false);
+  const location = useLocation();
   const [hmbgrMenuOpen, setHmbgrMenuOpen] = useState(false);
   const [isProfWorkMenuVisible, setProfWorkMenuVisible] = useState(false);
   const [isFilmsMenuVisible, setFilmsMenuVisible] = useState(false);
   let leaveProfWorkTimeout;
   let leaveFilmsTimeout;
+
+  const getActiveLink= (link) => {
+    return location.pathname.includes(link) ? "header__link--active" : "";
+};
+
+const getActiveHomeLink= (link) => {
+  return location.pathname === (link) ? "header__link--active" : "";
+};
 
   const toggleMenu = () => {
     setHmbgrMenuOpen(!hmbgrMenuOpen);
@@ -57,7 +61,7 @@ function Header() {
         <nav className="header__nav">
           <ul className="header__list header__list--wraps">
             <li className="header__item">
-              <Link className="header__link" to="/bgpaint">
+              <Link className={`header__link ${getActiveLink("bgpaint")}`} to="/bgpaint">
                 Layout & Paint
               </Link>
             </li>
@@ -143,7 +147,7 @@ function Header() {
               </a>
             </li>
             <li className="header__item">
-              <Link className="header__link" to="/">
+              <Link className={`header__link ${getActiveHomeLink("/")}`} to="/">
                 About
               </Link>
             </li>
@@ -151,12 +155,11 @@ function Header() {
           <ul className="header__list">
             <li className="header__item">
               <a
-                className="header__contact-link"
                 href="mailto:dannysilvaart@gmail.com"
                 target="_blank"
                 aria-label="CONTACT"
               >
-                CONTACT
+                <IoMail className="header__icon"></IoMail>
               </a>
             </li>
             <li className="header__item">
@@ -164,17 +167,17 @@ function Header() {
                 href="https://www.linkedin.com/in/dannysilvaart"
                 target="_blank"
               >
-                <img src={linkedInIcon} />
+                <IoLogoLinkedin className="header__icon"></IoLogoLinkedin>
               </a>
             </li>
             <li className="header__item">
               <a href="https://twitter.com/_okdanny" target="_blank">
-                <img src={twitterIcon} />
+                <IoLogoTwitter className="header__icon"></IoLogoTwitter>
               </a>
             </li>
             <li className="header__item">
               <a href="https://instagram.com/_okdanny" target="_blank">
-                <img src={instagramIcon} />
+                <IoLogoInstagram className="header__icon"></IoLogoInstagram>
               </a>
             </li>
           </ul>

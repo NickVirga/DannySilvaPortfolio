@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import Header from "./components/Header/Header";
+import Hero from "./components/Hero/Hero"
 import Footer from "./components/Footer/Footer";
 import LayoutPaintPage from "./pages/LayoutPaintPage/LayoutPaintPage"
 import BluesCluesPage from "./pages/BluesCluesPage/BluesCluesPage";
@@ -16,6 +17,7 @@ function App() {
   return (
     <BrowserRouter>
     <Header></Header>
+    <Hero></Hero>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/bgpaint" element={<LayoutPaintPage />} />
