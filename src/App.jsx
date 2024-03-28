@@ -30,7 +30,6 @@ function App() {
         <Route path="/thesis-em-memoria/:imageId" element={<EmMemoriaPage />} />
         <Route path="/pizza-panic-group-film" element={<PizzaPanicPage />} />
         {/* <Route path="/design" element={<DesignPage />} /> */}
-        {/* <Route path="/resume" element={<ResumePage />} /> */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer></Footer>

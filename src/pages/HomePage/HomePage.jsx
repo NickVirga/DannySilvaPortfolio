@@ -12,11 +12,11 @@ function HomePage() {
       <div className="about__content">
         <h1 className="about__">ABOUT</h1>
         <p className="about__bio">
-          Danny is an experienced background painter and layout artist working
-          in animation. Currently, they are working with 9Story/Brown Bag Films
+          Danny is an experienced illustrator and background artist working
+          in animation. They have most recently worked with 9Story/Brown Bag Films
           on Sony Pictures Animation's <i>Open Season: Call of Nature</i> as a
-          background artist and previously worked in the same role on Blues
-          Clues and You. With experience working on 2D, 3D, and live-action
+          background artist and previously worked in the same role on Nick Jr.'s <i>Blues
+          Clues and You</i>. With experience working on 2D, 3D, and live-action
           productions, they would make an excellent addition to any production
           team. 
         </p>
