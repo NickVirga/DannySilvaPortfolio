@@ -45,6 +45,7 @@ function OpenSeasonPage() {
           <img className="open-season__image"  src={image.url} alt={image.caption}></img>
         </Link>
       ))}
+      <p className="blues-clues__disclaimer">I am solely responsible for the background paint and do not take credit for the layout work.</p>
     </section>
   );
 }
