@@ -16,7 +16,6 @@ function Modal({ open, onClose, imageUrl }) {
           <div className="modal__overlay" onClick={onClose}> </div>
           <div className="modal">
             <img className="modal__image"  src={imageUrl}></img>
-            {/* <button onClick={onClose}>Close Modal</button> */}
           </div>
         </>,
         portalContainer
