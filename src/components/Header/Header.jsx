@@ -3,10 +3,6 @@ import { Link } from "react-router-dom";
 
 import "./Header.sass";
 
-// import linkedInIcon from "../../assets/icons/linkedin-icon.png";
-// import twitterIcon from "../../assets/icons/twitter-icon.png";
-// import instagramIcon from "../../assets/icons/instagram-icon.png";
-
 import {
   IoMenu,
   IoLogoTwitter,
