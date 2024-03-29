@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 import "./HamburgerMenu.sass";
 
-import { IoClose } from "react-icons/io5";
 import {
+  IoClose,
   IoLogoTwitter,
   IoLogoInstagram,
   IoLogoLinkedin,
@@ -33,7 +33,7 @@ function HambugerMenu({ open, onClose }) {
     setFilmsMenuVisible(!isFilmsMenuVisible);
     setProfWorkMenuVisible(false);
   };
-  
+
   return ReactDom.createPortal(
     <>
       <div className="hamburger__overlay" onClick={onClose}></div>
@@ -54,17 +54,29 @@ function HambugerMenu({ open, onClose }) {
           {isProfWorkMenuVisible && (
             <ul className="hamburger__list hamburger__list--submenu">
               <li className="hamburger__item">
-                <Link className="hamburger__sub-link" to="/bluescluesandyou" onClick={onClose}>
+                <Link
+                  className="hamburger__sub-link"
+                  to="/bluescluesandyou"
+                  onClick={onClose}
+                >
                   Blues Clues and You
                 </Link>
               </li>
               <li className="hamburger__item">
-                <Link className="hamburger__sub-link" to="/elinorwonderswhy" onClick={onClose}>
+                <Link
+                  className="hamburger__sub-link"
+                  to="/elinorwonderswhy"
+                  onClick={onClose}
+                >
                   Elinor Wonders Why
                 </Link>
               </li>
               <li className="hamburger__item">
-                <Link className="hamburger__sub-link" to="/openseason" onClick={onClose}>
+                <Link
+                  className="hamburger__sub-link"
+                  to="/openseason"
+                  onClick={onClose}
+                >
                   Open Season: Call of Nature
                 </Link>
               </li>
@@ -80,14 +92,19 @@ function HambugerMenu({ open, onClose }) {
           {isFilmsMenuVisible && (
             <ul className="hamburger__list hamburger__list--submenu">
               <li className="hamburger__item">
-                <Link className="hamburger__sub-link" to="/thesis-em-memoria" onClick={onClose}>
+                <Link
+                  className="hamburger__sub-link"
+                  to="/thesis-em-memoria"
+                  onClick={onClose}
+                >
                   Em Memoria
                 </Link>
               </li>
               <li className="hamburger__item">
                 <Link
                   className="hamburger__sub-link"
-                  to="/pizza-panic-group-film" onClick={onClose}
+                  to="/pizza-panic-group-film"
+                  onClick={onClose}
                 >
                   Pizza Panic!
                 </Link>
@@ -115,7 +132,7 @@ function HambugerMenu({ open, onClose }) {
             </a>
           </li>
           <li className="hamburger__item">
-            <Link className="hamburger__link" to="/" onClick={onClose}> 
+            <Link className="hamburger__link" to="/" onClick={onClose}>
               About
             </Link>
           </li>
