@@ -41,7 +41,7 @@ function HambugerMenu({ open, onClose }) {
         <IoClose className="hamburger__close-icon" onClick={onClose} />
         <ul className="hamburger__list">
           <li className="hamburger__item">
-            <Link className="hamburger__link" to="/bgpaint">
+            <Link className="hamburger__link" to="/bgpaint" onClick={onClose}>
               Layout & Paint
             </Link>
           </li>
@@ -54,17 +54,17 @@ function HambugerMenu({ open, onClose }) {
           {isProfWorkMenuVisible && (
             <ul className="hamburger__list hamburger__list--submenu">
               <li className="hamburger__item">
-                <Link className="hamburger__sub-link" to="/bluescluesandyou">
+                <Link className="hamburger__sub-link" to="/bluescluesandyou" onClick={onClose}>
                   Blues Clues and You
                 </Link>
               </li>
               <li className="hamburger__item">
-                <Link className="hamburger__sub-link" to="/elinorwonderswhy">
+                <Link className="hamburger__sub-link" to="/elinorwonderswhy" onClick={onClose}>
                   Elinor Wonders Why
                 </Link>
               </li>
               <li className="hamburger__item">
-                <Link className="hamburger__sub-link" to="/openseason">
+                <Link className="hamburger__sub-link" to="/openseason" onClick={onClose}>
                   Open Season: Call of Nature (2023)
                 </Link>
               </li>
@@ -80,14 +80,14 @@ function HambugerMenu({ open, onClose }) {
           {isFilmsMenuVisible && (
             <ul className="hamburger__list hamburger__list--submenu">
               <li className="hamburger__item">
-                <Link className="hamburger__sub-link" to="/thesis-em-memoria">
+                <Link className="hamburger__sub-link" to="/thesis-em-memoria" onClick={onClose}>
                   Em Memoria
                 </Link>
               </li>
               <li className="hamburger__item">
                 <Link
                   className="hamburger__sub-link"
-                  to="/pizza-panic-group-film"
+                  to="/pizza-panic-group-film" onClick={onClose}
                 >
                   Pizza Panic!
                 </Link>
@@ -115,7 +115,7 @@ function HambugerMenu({ open, onClose }) {
             </a>
           </li>
           <li className="hamburger__item">
-            <Link className="hamburger__link" to="/">
+            <Link className="hamburger__link" to="/" onClick={onClose}> 
               About
             </Link>
           </li>
