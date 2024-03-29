@@ -11,7 +11,6 @@ import { IoMenu } from "react-icons/io5";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
 
 function Header() {
-  // const [isMobile, setIsMobile] = useState(false);
   const [hmbgrMenuOpen, setHmbgrMenuOpen] = useState(false);
   const [isProfWorkMenuVisible, setProfWorkMenuVisible] = useState(false);
   const [isFilmsMenuVisible, setFilmsMenuVisible] = useState(false);

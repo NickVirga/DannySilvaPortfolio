@@ -65,7 +65,7 @@ function HambugerMenu({ open, onClose }) {
               </li>
               <li className="hamburger__item">
                 <Link className="hamburger__sub-link" to="/openseason" onClick={onClose}>
-                  Open Season: Call of Nature (2023)
+                  Open Season: Call of Nature
                 </Link>
               </li>
             </ul>
