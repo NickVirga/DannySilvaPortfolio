@@ -1,15 +1,19 @@
 import React from "react";
+import Hero from "../../components/Hero/Hero"
 
 import "./HomePage.sass";
 
+
 function HomePage() {
   return (
-    <section className="about">
+    <main>
+      <Hero isSlider={true}></Hero>
+      <section className="about">
       <div className="about__img-container">
-        <img className="about__profile-pic" src={"/images/AVATAR.png"}></img>
+        <img className="about__profile-pic" src={"/images/AVATAR.png"} alt="illustration of Danny holding up hand peace sign"></img>
       </div>
       <div className="about__content">
-        <h1 className="about__">ABOUT</h1>
+        <h2 className="about__title">ABOUT</h2>
         <p className="about__bio">
           Danny is an experienced illustrator and background artist working
           in animation. They have most recently worked with 9Story/Brown Bag Films
@@ -23,7 +27,8 @@ function HomePage() {
           RESUME
         </a>
       </div>
-    </section>
+      </section>
+    </main>
   );
 }
 

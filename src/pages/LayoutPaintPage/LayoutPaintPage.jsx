@@ -1,52 +1,64 @@
-import React, { useState, useEffect} from "react";
-import { Link, useParams, useNavigate} from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
-import "./LayoutPaintPage.sass"
+import "./LayoutPaintPage.sass";
 
-import imageData from "../../assets/data/images-layout-paint.json"
+import imageData from "../../assets/data/images-layout-paint.json";
 
-import Modal from "../../components/Modal/Modal"
-
+import Modal from "../../components/Modal/Modal";
+import Hero from "../../components/Hero/Hero"
 
 function LayoutPaintPage() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { imageId } = useParams();
-  const [modalOpen, setModalOpen] = useState(false)
-  const [imageUrl, setImageUrl] = useState(imageId)
+  const [modalOpen, setModalOpen] = useState(false);
+  const [imageUrl, setImageUrl] = useState(imageId);
 
   useEffect(() => {
     if (imageId) {
-      const { url } = imageData.find(image => image.id === imageId) ?? {};
-      setImageUrl(url)
-      setModalOpen(true)
+      const { url } = imageData.find((image) => image.id === imageId) ?? {};
+      setImageUrl(url);
+      setModalOpen(true);
     }
-  }, [imageId])
-  
+  }, [imageId]);
 
   const handleCloseModal = () => {
     setModalOpen(false);
-    navigate("/bgpaint")
+    navigate("/bgpaint");
   };
 
   const clickHandler = (url) => {
-    setImageUrl(url)
-    setModalOpen(true)
-  }
-
+    setImageUrl(url);
+    setModalOpen(true);
+  };
 
   return (
-    <section className="layout-paint">
-      <Modal
+    <main>
+      <Hero isSlider={false} imageSrc={imageData[11].url} titleText={"Layout & Paint"}></Hero>
+      <section className="layout-paint">
+        <Modal
           open={modalOpen}
           onClose={handleCloseModal}
           imageUrl={imageUrl}
         ></Modal>
-      {imageData.map(image => (
-        <Link className="layout-paint__link" key={image.id} to={`/bgpaint/${image.id}`} onClick={()=>{clickHandler(image.url)}} >
-          <img className="layout-paint__image"  src={image.url} alt={image.caption}></img>
-        </Link>
-      ))}
-    </section>
+        {imageData.map((image) => (
+          <Link
+            className="layout-paint__link"
+            key={image.id}
+            to={`/bgpaint/${image.id}`}
+            onClick={() => {
+              clickHandler(image.url);
+            }}
+          >
+            <img
+              className="layout-paint__image"
+              src={image.url}
+              alt={image.caption}
+            ></img>
+          </Link>
+        ))}
+      </section>
+    </main>
   );
 }
 

@@ -1,42 +1,46 @@
-import React, { useState, useEffect} from "react";
-import { Link, useParams, useNavigate} from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
-import "./ElinorWondersPage.sass"
+import "./ElinorWondersPage.sass";
 
-import imageData from "../../assets/data/images-elinor-wonders.json"
+import imageData from "../../assets/data/images-elinor-wonders.json";
 
-import Modal from "../../components/Modal/Modal"
-
+import Modal from "../../components/Modal/Modal";
+import Hero from "../../components/Hero/Hero";
 
 function ElinorWondersPage() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { imageId } = useParams();
-  const [modalOpen, setModalOpen] = useState(false)
-  const [imageUrl, setImageUrl] = useState(imageId)
+  const [modalOpen, setModalOpen] = useState(false);
+  const [imageUrl, setImageUrl] = useState(imageId);
 
   useEffect(() => {
     if (imageId) {
-      const { url } = imageData.find(image => image.id === imageId) ?? {};
-      setImageUrl(url)
-      setModalOpen(true)
+      const { url } = imageData.find((image) => image.id === imageId) ?? {};
+      setImageUrl(url);
+      setModalOpen(true);
     }
-  }, [imageId])
-  
+  }, [imageId]);
 
   const handleCloseModal = () => {
     setModalOpen(false);
-    navigate("/elinorwonderswhy")
+    navigate("/elinorwonderswhy");
   };
 
   const clickHandler = (url) => {
-    setImageUrl(url)
-    setModalOpen(true)
-  }
-
+    setImageUrl(url);
+    setModalOpen(true);
+  };
 
   return (
-    <section className="elinor-wonders">
-      <Modal
+    <main>
+      <Hero
+        isSlider={false}
+        imageSrc={imageData[9].url}
+        titleText={"Elinor Wonders Why"}
+      ></Hero>
+      <section className="elinor-wonders">
+        <Modal
           open={modalOpen}
           onClose={handleCloseModal}
           imageUrl={imageUrl}
@@ -46,8 +50,9 @@ function ElinorWondersPage() {
           <img className="elinor-wonders__image"  src={image.url} alt={image.caption}></img>
         </Link>
       ))}
-      <p className="blues-clues__disclaimer">I am solely responsible for the background paint and do not take credit for the layout work.</p>
+      <p className="elinor-wonders__disclaimer">I am solely responsible for the background paint and do not take credit for the layout work.</p>
     </section>
+    </main>
   );
 }
 
