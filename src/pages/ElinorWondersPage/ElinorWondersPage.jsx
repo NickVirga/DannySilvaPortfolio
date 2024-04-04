@@ -45,23 +45,13 @@ function ElinorWondersPage() {
           onClose={handleCloseModal}
           imageUrl={imageUrl}
         ></Modal>
-        {imageData.map((image) => (
-          <Link
-            className="elinor-wonders__link"
-            key={image.id}
-            to={`/elinorwonderswhy/${image.id}`}
-            onClick={() => {
-              clickHandler(image.url);
-            }}
-          >
-            <img
-              className="elinor-wonders__image"
-              src={image.url}
-              alt={image.caption}
-            ></img>
-          </Link>
-        ))}
-      </section>
+      {imageData.map(image => (
+        <Link className="elinor-wonders__link" key={image.id} to={`/elinorwonderswhy/${image.id}`} onClick={()=>{clickHandler(image.url)}} >
+          <img className="elinor-wonders__image"  src={image.url} alt={image.caption}></img>
+        </Link>
+      ))}
+      <p className="elinor-wonders__disclaimer">I am solely responsible for the background paint and do not take credit for the layout work.</p>
+    </section>
     </main>
   );
 }

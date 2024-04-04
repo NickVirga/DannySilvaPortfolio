@@ -61,6 +61,10 @@ function OpenSeasonPage() {
             ></img>
           </Link>
         ))}
+        <p className="open-season__disclaimer">
+          I am solely responsible for the background paint and do not take
+          credit for the layout work.
+        </p>
       </section>
     </main>
   );

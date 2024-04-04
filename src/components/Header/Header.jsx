@@ -3,7 +3,13 @@ import { Link, useLocation } from "react-router-dom";
 
 import "./Header.sass";
 
-import { IoMenu, IoLogoTwitter, IoLogoInstagram, IoLogoLinkedin, IoMail } from "react-icons/io5";
+import {
+  IoMenu,
+  IoLogoTwitter,
+  IoLogoInstagram,
+  IoLogoLinkedin,
+  IoMail,
+} from "react-icons/io5";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
 
 function Header() {
@@ -57,10 +63,10 @@ const getActiveHomeLink= (link) => {
   return (
     <header className={`header${checkIfPizza()}`}>
       <div className="header__title-container">
-      <Link className="header__logo" to="/">
-        <h1 className="header__title">Danny Silva</h1>
-      </Link>
-      <h2 className="header__subtitle">Illustrator and Background Artist</h2>
+        <Link className="header__logo" to="/">
+          <h1 className="header__title">Danny Silva</h1>
+        </Link>
+        <h2 className="header__subtitle">Illustrator and Background Artist</h2>
       </div>
         <nav className="header__nav">
           <ul className="header__list header__list--wraps">
@@ -187,11 +193,7 @@ const getActiveHomeLink= (link) => {
           </ul>
         </nav>
       <IoMenu className="header__menu-icon" onClick={toggleMenu} />
-      <HamburgerMenu
-          
-          open={hmbgrMenuOpen}
-          onClose={toggleMenu}
-        ></HamburgerMenu>
+      <HamburgerMenu open={hmbgrMenuOpen} onClose={toggleMenu}></HamburgerMenu>
     </header>
   );
 }
