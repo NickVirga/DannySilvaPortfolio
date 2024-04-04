@@ -7,7 +7,7 @@ import "./Hero.sass";
 
 import imageData from "../../assets/data/images-hero.json";
 
-function Hero() {
+function Hero({ isSlider, imageSrc, titleText }) {
   const settings = {
     arrows: false,
     dots: false,
@@ -19,21 +19,29 @@ function Hero() {
     swipe: false,
     autoplay: true,
     autoplaySpeed: 5000,
-    lazyLoad: 'progressive'
+    lazyLoad: "progressive",
   };
 
   return (
     <div className="hero">
-      <Slider {...settings}>
-        {imageData.map((image, index) => {
-          return (
-            <div key={index} className="hero__image-container">
-              <div className="hero__overlay"></div>
-              <img key={index} className="hero__image" src={image.url} />
-            </div>
-          );
-        })}
-      </Slider>
+      {isSlider ? (
+        <Slider {...settings}>
+          {imageData.map((image, index) => {
+            return (
+              <div key={index} className="hero__image-container">
+                <div className="hero__overlay"></div>
+                <img className="hero__image" src={image.url} />
+              </div>
+            );
+          })}
+        </Slider>
+      ) : (
+        <div className="hero__image-container">
+          <div className="hero__overlay"></div>
+          <img className="hero__image" src={imageSrc} />
+          <h2 className="hero__title">{titleText}</h2>
+        </div>
+      )}
     </div>
   );
 }

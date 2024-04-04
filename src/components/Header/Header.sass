@@ -3,7 +3,6 @@
     
 .header
     padding-bottom: 1rem
-    margin: auto
     display: flex
     justify-content: space-between
     position: absolute
@@ -13,15 +12,22 @@
     color: white
     width: 100%
 
+    &--dark
+        @extend .header
+        color: black
+
     @include tablet
         padding-top: 5rem
         padding-left: 5rem
         padding-right: 5rem
         flex-direction: column
 
-    @include desktop
+    @include desktopXL
         padding-left: 10rem
         padding-right: 10rem
+        max-width: 1540px
+        left: calc((100% - 1540px)/2)
+        margin: auto
 
     &__title-container
         padding-left: 1rem
@@ -44,7 +50,7 @@
 
     &__logo
         text-decoration: none
-        color: white
+        color: inherit
 
     &__nav
         display: none
@@ -81,16 +87,16 @@
 
     &__link
         text-decoration: none
-        color: white
+        color: inherit
         cursor: pointer
         display: inline
         padding-bottom: 0.1rem
 
         &:hover
-            border-bottom: 2px solid white
+            border-bottom: 2px solid
 
         &--active
-            border-bottom: 2px solid white
+            border-bottom: 2px solid
 
         &--submenu
             white-space: nowrap
@@ -108,12 +114,15 @@
         color: white
         font-size: 1.4rem
 
+        &--dark
+            @extend .header__icon
+            color: black
+
     &__menu-icon
         font-size: 2.5rem
         cursor: pointer
         position: fixed
         right: 0.5rem
-        color: white
 
         @include tablet
             display: none

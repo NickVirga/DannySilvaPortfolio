@@ -3,10 +3,12 @@
 @mixin tablet 
   @media screen and (min-width: $tablet-breakpoint) 
     @content
-  
-
 
 @mixin desktop 
   @media screen and (min-width: $desktop-breakpoint) 
+    @content
+
+@mixin desktopXL 
+  @media screen and (min-width: $desktopXL-breakpoint) 
     @content
   

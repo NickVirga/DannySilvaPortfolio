@@ -6,6 +6,8 @@
         position: relative
         overflow: hidden
         width: 100%
+        display: flex
+        justify-content: center
         
 
     &__overlay
@@ -22,6 +24,21 @@
         aspect-ratio: 16 / 9
         object-fit: cover
         max-height: 50.625rem
+
+    &__title
+        color: white
+        font-size: 2rem
+        position: absolute
+        bottom: 2rem
+        z-index: 2
+
+        @include tablet
+            font-size: 3rem
+            bottom: 5rem
+            
+        @include desktop
+            bottom: 10rem
+
 
 .slick-track
     line-height: 0

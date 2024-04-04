@@ -14,6 +14,10 @@ function Header() {
   let leaveProfWorkTimeout;
   let leaveFilmsTimeout;
 
+  const checkIfPizza = () =>  {
+    return location.pathname.includes("pizza") ? "--dark" : "";
+  }
+
   const getActiveLink= (link) => {
     return location.pathname.includes(link) ? "header__link--active" : "";
 };
@@ -51,7 +55,7 @@ const getActiveHomeLink= (link) => {
   };
 
   return (
-    <header className="header">
+    <header className={`header${checkIfPizza()}`}>
       <div className="header__title-container">
       <Link className="header__logo" to="/">
         <h1 className="header__title">Danny Silva</h1>
@@ -159,7 +163,7 @@ const getActiveHomeLink= (link) => {
                 target="_blank"
                 aria-label="CONTACT"
               >
-                <IoMail className="header__icon"></IoMail>
+                <IoMail className={`header__icon${checkIfPizza()}`}></IoMail>
               </a>
             </li>
             <li className="header__item">
@@ -167,17 +171,17 @@ const getActiveHomeLink= (link) => {
                 href="https://www.linkedin.com/in/dannysilvaart"
                 target="_blank"
               >
-                <IoLogoLinkedin className="header__icon"></IoLogoLinkedin>
+                <IoLogoLinkedin className={`header__icon${checkIfPizza()}`}></IoLogoLinkedin>
               </a>
             </li>
             <li className="header__item">
               <a href="https://twitter.com/_okdanny" target="_blank">
-                <IoLogoTwitter className="header__icon"></IoLogoTwitter>
+                <IoLogoTwitter className={`header__icon${checkIfPizza()}`}></IoLogoTwitter>
               </a>
             </li>
             <li className="header__item">
               <a href="https://instagram.com/_okdanny" target="_blank">
-                <IoLogoInstagram className="header__icon"></IoLogoInstagram>
+                <IoLogoInstagram className={`header__icon${checkIfPizza()}`}></IoLogoInstagram>
               </a>
             </li>
           </ul>
