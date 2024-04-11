@@ -52,8 +52,10 @@ function LayoutPaintPage() {
           >
             <img
               className="layout-paint__image"
-              src={image.url}
+              src={image['url-s']}
               alt={image.caption}
+              decoding="async"
+              loading={image.lazyload ? 'lazy' : 'eager'}
             ></img>
           </Link>
         ))}
