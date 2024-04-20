@@ -2,60 +2,51 @@
     {
       "id": "afdec819-17c3-49de-a290-e986151f8859",
       "url": "/images/blues-clues/1.jpg",
-      "url-s": "/images/blues-clues/1-s.jpg",
       "caption": "field of plants and mushrooms with a birthday cake and giant fork"
     },
     {
       "id": "7a937589-8768-4648-aea9-6d146aa9cb99",
       "url": "/images/blues-clues/2.png",
-      "url-s": "/images/blues-clues/2-s.png",
       "caption": "farm scene with pumpkins and a chair made of hay"
     },
     {
       "id": "9a929ab9-9628-4519-931f-e4eb519ce9e5",
       "url": "/images/blues-clues/3.jpg",
-      "url-s": "/images/blues-clues/3-s.jpg",
       "caption": "backstage of a theater"
     },
     {
       "id": "fc47b406-a614-4d72-a305-00ba1c364fbb",
       "url": "/images/blues-clues/4.jpg",
-      "url-s": "/images/blues-clues/4-s.jpg",
       "caption": "table with chairs indoors",
       "lazyload": true
     },
     {
       "id": "5ba5e6b8-3612-474a-af0d-edcd9fa7cf0c",
       "url": "/images/blues-clues/5.jpg",
-      "url-s": "/images/blues-clues/5-s.jpg",
       "caption": "small outdoor stage in a field",
       "lazyload": true
     },
     {
       "id": "937d61df-e2a9-4802-9771-104ac6d8a429",
       "url": "/images/blues-clues/6.jpg",
-      "url-s": "/images/blues-clues/6-s.jpg", 
       "caption": "beach with palm trees and a chair made of sand",
       "lazyload": true
     },
     {
       "id": "dfe469e4-6a61-4497-aacf-ffceb6dca790",
       "url": "/images/blues-clues/7.png",
-      "url-s": "/images/blues-clues/7-s.png",
       "caption": "winter scene with ginger bread house and tous on a conveyor belt",
       "lazyload": true
     },
     {
       "id": "196dc3d4-1980-4ce6-953c-01b8b6d219f8",
       "url": "/images/blues-clues/8.png",
-      "url-s": "/images/blues-clues/8-s.png",
       "caption": "path through a forest",
       "lazyload": true
     },
     {
       "id": "5e6e2465-c60f-4504-a6e9-73aa16a3eb6c",
       "url": "/images/blues-clues/9.png",
-      "url-s": "/images/blues-clues/9-s.png",
       "caption": "Hanukkah party scene inside home",
       "lazyload": true
     }

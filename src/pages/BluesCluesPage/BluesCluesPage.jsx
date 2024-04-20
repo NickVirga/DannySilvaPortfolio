@@ -12,7 +12,24 @@ function BluesCluesPage() {
   const navigate = useNavigate();
   const { imageId } = useParams();
   const [modalOpen, setModalOpen] = useState(false);
-  const [imageUrl, setImageUrl] = useState(imageId);
+  const [imageUrl, setImageUrl] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+    const handleMediaQueryChange = (e) => {
+      setIsMobile(e.matches);
+    };
+
+    handleMediaQueryChange(mediaQuery);
+
+    mediaQuery.addEventListener("change", handleMediaQueryChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+    };
+  }, []);
 
   useEffect(() => {
     if (imageId) {
@@ -40,11 +57,13 @@ function BluesCluesPage() {
         titleText={"Blues Clues and You"}
       ></Hero>
       <section className="blues-clues">
-        <Modal
-          open={modalOpen}
-          onClose={handleCloseModal}
-          imageUrl={imageUrl}
-        ></Modal>
+        {imageUrl && (
+          <Modal
+            open={modalOpen}
+            onClose={handleCloseModal}
+            imageUrl={isMobile ? imageUrl.replace(".", "-s.") : imageUrl}
+          ></Modal>
+        )}
         {imageData.map((image) => (
           <Link
             className="blues-clues__link"
@@ -56,10 +75,14 @@ function BluesCluesPage() {
           >
             <img
               className="blues-clues__image"
-              src={image.url}
+              src={
+                isMobile
+                  ? image.url.replace(".", "-s.")
+                  : image.url.replace(".", "-m.")
+              }
               alt={image.caption}
               decoding="async"
-              loading={image.lazyload ? 'lazy' : 'eager'}
+              loading={image.lazyload ? "lazy" : "eager"}
             ></img>
           </Link>
         ))}

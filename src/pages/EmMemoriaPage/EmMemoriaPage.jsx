@@ -13,7 +13,24 @@ function EmMemoriaPage() {
   const navigate = useNavigate();
   const { imageId } = useParams();
   const [modalOpen, setModalOpen] = useState(false);
-  const [imageUrl, setImageUrl] = useState(imageId);
+  const [imageUrl, setImageUrl] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+    const handleMediaQueryChange = (e) => {
+      setIsMobile(e.matches);
+    };
+
+    handleMediaQueryChange(mediaQuery);
+
+    mediaQuery.addEventListener("change", handleMediaQueryChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+    };
+  }, []);
 
   useEffect(() => {
     if (imageId) {
@@ -41,11 +58,13 @@ function EmMemoriaPage() {
         titleText={"Em Memoria"}
       ></Hero>
       <section className="em-memoria">
-        <Modal
-          open={modalOpen}
-          onClose={handleCloseModal}
-          imageUrl={imageUrl}
-        ></Modal>
+        {imageUrl && (
+          <Modal
+            open={modalOpen}
+            onClose={handleCloseModal}
+            imageUrl={isMobile ? imageUrl.replace(".", "-s.") : imageUrl}
+          ></Modal>
+        )}
         <Link
           className="em-memoria__link"
           key={imageData[0].id}
@@ -56,7 +75,11 @@ function EmMemoriaPage() {
         >
           <img
             className="em-memoria__image"
-            src={imageData[0].url}
+            src={
+              isMobile
+                ? imageData[0].url.replace(".", "-s.")
+                : imageData[0].url.replace(".", "-m.")
+            }
             alt={imageData[0].caption}
           ></img>
         </Link>
@@ -76,7 +99,11 @@ function EmMemoriaPage() {
           >
             <img
               className=" em-memoria__image"
-              src={image.url}
+              src={
+                isMobile
+                  ? image.url.replace(".", "-s.")
+                  : image.url.replace(".", "-m.")
+              }
               alt={image.caption}
             ></img>
           </Link>

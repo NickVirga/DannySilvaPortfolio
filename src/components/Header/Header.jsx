@@ -64,7 +64,8 @@ const getActiveHomeLink= (link) => {
     <header className={`header${checkIfPizza()}`}>
       <div className="header__title-container">
         <Link className="header__logo" to="/">
-          <h1 className="header__title">Danny Silva</h1>
+          {/* <h1 className="header__title">Danny Silva</h1> */}
+          <img className="header__title" src={"/images/Logo_DannySilva_Yellow.png"}></img>
         </Link>
         <h2 className="header__subtitle">Illustrator and Background Artist</h2>
       </div>
