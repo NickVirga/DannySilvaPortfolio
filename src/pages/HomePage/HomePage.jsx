@@ -22,7 +22,7 @@ function HomePage() {
           productions, he would make an excellent addition to any production
           team. 
         </p>
-        <a className="about__resume-link" href="https://drive.google.com/file/d/14_w0y63uVIi85OGG6Yx8Gef0n6952Ll_/view?usp=sharing" target="_blank" aria-label="RESUME">
+        <a className="about__resume-link" href="https://docs.google.com/document/d/1bmQXmo0ViyWEl28L_ll32TvSsFJP9ggfAFLPaO645aw/mobilebasic" target="_blank" aria-label="RESUME">
           RESUME
         </a>
       </div>

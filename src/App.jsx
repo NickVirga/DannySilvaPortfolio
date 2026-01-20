@@ -11,6 +11,7 @@ import OpenSeasonPage from "./pages/OpenSeasonPage/OpenSeasonPage"
 import EmMemoriaPage from "./pages/EmMemoriaPage/EmMemoriaPage"
 import PizzaPanicPage from "./pages/PizzaPanicPage/PizzaPanicPage"
 import NotFoundPage from "./pages/NotFoundPage/NotFound"
+import ProtectedPage from "./pages/ProtectedPage/ProtectedPage";
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
         <Route path="/thesis-em-memoria" element={<EmMemoriaPage />} />
         <Route path="/thesis-em-memoria/:imageId" element={<EmMemoriaPage />} />
         <Route path="/pizza-panic-group-film" element={<PizzaPanicPage />} />
-        {/* <Route path="/design" element={<DesignPage />} /> */}
+        <Route path="/protected" element={<ProtectedPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer></Footer>

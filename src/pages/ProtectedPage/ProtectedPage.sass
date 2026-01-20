@@ -1,0 +1,67 @@
+@use "../../styles/partials/variables" as *
+@use "../../styles/partials/mixins" as *
+    
+.about
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    padding-top: 2rem
+    gap: 3rem
+    margin: auto
+    min-height: 100vh
+    align-items: center
+
+    @include tablet
+        flex-direction: row
+        justify-content: center
+        padding-top: 7rem
+        align-items: flex-start
+
+    &__img-container
+        margin-top: 1rem
+        overflow: hidden
+        border-radius: 50%
+        min-width: 16.5625rem
+        min-height: 16.5625rem
+        width: 16.5625rem
+        height: 16.5625rem
+        position: relative
+
+    &__profile-pic
+        width: 100%
+        height: 100%
+        object-fit: cover
+        pointer-events: none
+        
+
+    &__content
+        display: flex
+        flex-direction: column
+        gap: 1.5rem
+        align-items: center
+        text-align: center
+        width: 20rem
+
+        @include tablet
+            width: 25rem
+
+
+    &__title
+        font-weight: 600
+
+    &__bio
+        line-height: 1.5rem
+        padding: 0 1rem
+  
+
+    &__resume-link
+        font-weight: 600
+        font-style: normal
+        font-size: 0.875rem
+        line-height: 0.625rem
+        text-decoration: none
+        padding: 0.625rem 0
+        width: 6.4375rem
+        background-color: $accent-color2
+        color: $accent-color1
+        text-align: center
