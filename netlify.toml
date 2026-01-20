@@ -2,15 +2,15 @@
   build = "npm run build"
   publish = "dist"
 
-# Password-protected route
+# Password-protected route first
 [[redirects]]
   from = "/protected/*"
-  to = "/protected/:splat"
+  to = "/index.html"
   status = 200
   force = true
   headers = { Authorization = "Basic" }
 
-# SPA fallback
+# SPA fallback for all other routes
 [[redirects]]
   from = "/*"
   to = "/index.html"
