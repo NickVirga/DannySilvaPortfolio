@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import "./Header.sass";
@@ -150,7 +150,7 @@ const getActiveHomeLink= (link) => {
             <li className="header__item">
               <a
                 className="header__link"
-                href="https://drive.google.com/file/d/14_w0y63uVIi85OGG6Yx8Gef0n6952Ll_/view?usp=sharing"
+                href="https://docs.google.com/document/d/1bmQXmo0ViyWEl28L_ll32TvSsFJP9ggfAFLPaO645aw/mobilebasic"
                 target="_blank"
                 aria-label="RESUME"
               >
@@ -181,11 +181,11 @@ const getActiveHomeLink= (link) => {
                 <IoLogoLinkedin className={`header__icon${checkIfPizza()}`}></IoLogoLinkedin>
               </a>
             </li>
-            <li className="header__item">
+            {/* <li className="header__item">
               <a href="https://twitter.com/_okdanny" target="_blank">
                 <IoLogoTwitter className={`header__icon${checkIfPizza()}`}></IoLogoTwitter>
               </a>
-            </li>
+            </li> */}
             <li className="header__item">
               <a href="https://instagram.com/_okdanny" target="_blank">
                 <IoLogoInstagram className={`header__icon${checkIfPizza()}`}></IoLogoInstagram>

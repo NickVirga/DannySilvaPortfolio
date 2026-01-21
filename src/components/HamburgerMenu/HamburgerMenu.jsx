@@ -1,5 +1,5 @@
 import ReactDom from "react-dom";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./HamburgerMenu.sass";
@@ -157,7 +157,7 @@ function HambugerMenu({ open, onClose }) {
               <IoLogoLinkedin></IoLogoLinkedin>
             </a>
           </li>
-          <li className="hamburger__socials-item">
+          {/* <li className="hamburger__socials-item">
             <a
               className="hamburger__socials-link"
               href="https://twitter.com/_okdanny"
@@ -165,7 +165,7 @@ function HambugerMenu({ open, onClose }) {
             >
               <IoLogoTwitter></IoLogoTwitter>
             </a>
-          </li>
+          </li> */}
           <li className="hamburger__socials-item">
             <a
               className="hamburger__socials-link"
